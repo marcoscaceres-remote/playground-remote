@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badging API Example</title>
+  <style>
+    button {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Badging API Example</h1>
+  <button id="set-badge">Set Badge</button>
+  <button id="clear-badge">Clear Badge</button>
+  <br>
+  <output id="error-output"></output>
+  
+  <script>
+    const setBadgeButton = document.getElementById('set-badge');
+    const clearBadgeButton = document.getElementById('clear-badge');
+    const errorOutput = document.getElementById('error-output');
+
+    setBadgeButton.addEventListener('click', async () => {
+      try {
+        const count = Math.floor(Math.random() * 100) + 1;
+        await navigator.setAppBadge(count);
+        errorOutput.value = ''; // Clear any previous error message
+      } catch (error) {
+        errorOutput.value = `Failed to set badge: ${error}`;
+      }
+    });
+
+    clearBadgeButton.addEventListener('click', async () => {
+      try {
+        await navigator.clearAppBadge();
+        errorOutput.value = ''; // Clear any previous error message
+      } catch (error) {
+        errorOutput.value = `Failed to clear badge: ${error}`;
+      }
+    });
+  </script>
+</body>
+</html>
