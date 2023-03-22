@@ -11,7 +11,7 @@
   </style>
 </head>
 <body>
-  <h1>Badging API Example</h1>
+  <h3 id="loc">Badging API</h2>
   <button id="set-badge">Set Badge</button>
   <button id="clear-badge">Clear Badge</button>
   <br>
@@ -21,6 +21,7 @@
     const setBadgeButton = document.getElementById('set-badge');
     const clearBadgeButton = document.getElementById('clear-badge');
     const errorOutput = document.getElementById('error-output');
+    const loc = document.getElementById('loc');
 
     setBadgeButton.addEventListener('click', async () => {
       try {
@@ -40,6 +41,7 @@
         errorOutput.value = `Failed to clear badge: ${error}`;
       }
     });
+    loc.innerText = `${loc.innerText} @ ${document.location.origin}`;
   </script>
 </body>
 </html>
